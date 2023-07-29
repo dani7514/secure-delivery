@@ -1,0 +1,24 @@
+<form [formGroup]="myLogin" (ngSubmit)="onSubmit()" class="container card mt-5" style="width: 20rem;">
+    <div class="card-body">
+      <h1 class="text-center mb-3" style="color: #e72929;">verify Otp</h1>
+        <div class="form-group ">
+          <label for="exampleInputEmail1" class="card-title">Email address</label>
+          <input formControlName="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+          <div class="text-danger" style="font-size: 0.75rem;" *ngIf="myLogin.get('email')?.invalid && (myLogin.get('email')?.dirty || myLogin.get('email')?.touched)">
+            Enter valid email address.
+          </div>
+          <small id="emailHelp" style="font-size: 0.75rem;" class="form-text text-muted " >We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1" class="card-title">OTP</label>
+          <input formControlName="otp" type="text" class="form-control" id="exampleInputPassword1" placeholder="Password">
+          <div class="text-danger" style="font-size: 0.75rem;" *ngIf="myLogin.get('password')?.invalid && (myLogin.get('password')?.dirty || myLogin.get('password')?.touched)">
+            Otp must be of minimum length 6.
+          </div>
+        </div>
+        <div class="btn-container">
+            <button [disabled]="myLogin.invalid" type="submit" class="btn btn-primary">verify and Log In</button>
+            <!-- <button class="btn btn-primary" style="margin-left: 20px;" (click)="myLogin.reset()">Reset</button> -->
+        </div>
+    </div>
+  </form>

@@ -1,0 +1,70 @@
+<h2 class="text-center">Checkout Page</h2>
+<div class="container">
+    <div class="content">
+        <form [formGroup]="checkoutForm">
+            <div class="form-row row mt-0">
+                <div class="form-group">
+                    <label for="inputName">Name</label>
+                    <input formControlName="name" type="text" class="form-control" id="inputName" placeholder="Name">
+                    <label for="inputAddress">Address</label>
+                    <input formControlName="address" type="text" class="form-control" id="inputAddress" placeholder="Address">
+                  </div>
+
+            </div>
+            <div class="map">
+                <h3>Choose your address on map</h3>
+                <app-map [order]="order"></app-map>
+            </div>
+        </form>
+
+        <table>
+            <tr>
+                <td colspan="5">
+                    <h3>Order Items</h3>
+                </td>
+            </tr>
+            <tr *ngFor="let item of order.items">
+                <td>
+                    <a routerLink="/food/{{item.food.id}}">
+                        <img [src]="item.food.imageUrl" alt="">
+                    </a>
+                </td>
+                <td>
+                    {{item.food.name}}
+                </td>
+                <td>
+                    {{item.food.price | currency:'INR':'symbol-narrow'}}
+                </td>
+                <td>
+                    {{item.quantity}}
+                </td>
+                <td>
+                    {{item.price| currency:'INR':'symbol-narrow'}}
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    
+                </td>
+                <td>
+                    <strong>
+                        Total:
+                    </strong>
+                </td>
+                <td>
+                    <strong>
+                        {{order.totalPrice | currency:'INR':'symbol-narrow'}}
+                    </strong>
+                </td>
+            </tr>
+        </table>
+
+        
+
+        <div class="buttons-container">
+            <div class="buttons">
+                <button (click)="createOrder()">Go to payment</button>
+            </div>
+        </div>
+    </div>
+</div>

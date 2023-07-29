@@ -1,0 +1,57 @@
+
+<div *ngIf="!cart.items.length" class="empty-cart text-center my-5">
+    <h2  >Your Cart is Empty</h2>
+    <button routerLink="/home">Add your food now</button>
+</div>
+<div class="container-cart">
+
+    <div *ngIf="cart.items" class="card-parent d-flex flex-column align-items-center">
+    <div class="card" *ngFor="let i of cart.items; index as in">
+        <!-- <h5 class="card-header">{{i.food.name}}</h5> -->
+        <div class="card-body d-flex ">
+            <img class="item-img" src="{{i.food.imageUrl}}" alt="">
+            <div class="item-content d-flex">
+                <div>
+                    <a class="cart-item-name" routerLink="/food/{{i.food.id}}">{{i.food.name}}</a>
+                    <star-rating
+                        [value]="i.food!.star"
+                        [totalstars]="5"
+                        checkedcolor="red"
+                        uncheckedcolor="black"
+                        size="25px"
+                        [readonly]="true">
+                    </star-rating>
+                    <h5 class="card-title">{{i.food.price| currency:'INR':'symbol-narrow'}}</h5>
+                    <p class="card-text">
+                        Quantity: 
+                        <select #quantitySelect
+                        [value]="i.quantity"
+                        (change)="changeQty(i,quantitySelect.value)">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                        <!-- <button class="btn btn-secondary" (click)="changeQty(i,'plus')">+</button>  -->
+                    </p>
+                </div>
+            </div>
+            <div class="cart-btns d-flex justify-content-center ">
+                <button class="remove btn btn-dark" (click)="removeFromCart(in)">Remove</button>
+
+            </div>
+        </div>
+      </div>
+     
+      
+    </div>
+    
+    <div *ngIf="cart.items.length" class=" checkout">
+        <div class="foods-count"><span>Total Food: </span>{{cart.totalCount}}</div>
+        <div class="total-price">Total Price: {{cart.totalPrice|currency:'INR':'symbol-narrow'}}</div> 
+        <div class="checkout-btn">
+            <a class="btn btn-warning" routerLink="/checkout">Checkout</a>
+        </div>
+    </div>
+</div>

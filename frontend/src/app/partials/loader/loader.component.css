@@ -1,0 +1,39 @@
+.loader-container{
+    margin: 0!important;
+    position:fixed;
+    height: 100vh;
+    width: 100%;
+    background: #ffffffea;
+    z-index: 1000000;
+    top: 0;
+    left: 0;
+}
+
+.details{
+    margin: 3rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+img{
+    border-radius: 15rem;
+}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    /* .loader-container{
+        position: relative;
+    } */
+    .details{
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        
+    }
+    img{
+        width: 60%;
+    }
+  }

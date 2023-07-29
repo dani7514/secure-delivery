@@ -1,0 +1,69 @@
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.container > *{
+    max-width: 40rem;
+}
+img{
+    border-radius: 3rem;
+    flex: 1 0;
+    object-fit: cover;
+    width: 80%;
+    margin: 2rem;
+}
+.details{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex:1 0;
+    border-radius: 3rem;
+    padding: 2rem;
+    color: black;
+}
+.details .header{
+    display: flex;
+    justify-content: space-between;
+}
+.details .name{
+    font-size: 2rem;
+    font-weight: bold;
+}
+.details .favorite{
+    color: #e72929;
+    font-size: 2.5rem;
+    cursor: pointer;
+}
+.details .favorite.not{
+    color: gray;
+}
+.details .origins span{
+    display: inline-block;
+    padding: .5rem;
+    font-size: 1.2rem;
+    margin: .5rem .5rem .5rem 0;
+    background-color: #66839c;
+    color: white;
+    border-radius: 2rem;
+}
+.details .cook-time{
+    margin: .5rem;
+}
+
+.details .price{
+    font-size: 2rem;
+}
+.details button{
+    color: white;
+    background-color: #e72929;
+    border: none;
+    font-size: 1rem;
+    padding: 1rem;
+    border-radius: 10rem;
+    cursor: pointer;
+}
+.details button:hover{
+    opacity: .9;
+}

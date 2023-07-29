@@ -1,0 +1,8 @@
+<div class="container">
+    <button *ngIf="!readonly" class="find-location" (click)="findMyLocation()">
+        Find My Location
+    </button>
+    <div #map class="map" leaflet>
+
+    </div>
+</div>

@@ -1,0 +1,38 @@
+<h3>Add a new food item to the database</h3>
+
+<form [formGroup]="itemForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="price">Price:</label>
+      <input type="number" id="price" formControlName="price" required>
+    </div>
+    <div>
+      <label for="name">Name:</label>
+      <input type="text" id="name" formControlName="name" required>
+    </div>
+    <div>
+      <label for="favorite">Favorite:</label>
+      <input type="checkbox" id="favorite" formControlName="favorite">
+    </div>
+    <div>
+      <label for="star">Star:</label>
+      <input type="number" step="0.1" id="star" formControlName="star">
+    </div>
+    <div>
+      <label for="tags">Tags:</label>
+      <input type="text" id="tags" formControlName="tags" [ngModel]="itemForm.value.tags.join(',')" (ngModelChange)="itemForm.patchValue({ tags: $event.split(',') })">
+    </div>
+    <div>
+      <label for="imageUrl">Image URL:</label>
+      <input type="text" id="imageUrl" formControlName="imageUrl" required>
+    </div>
+    <div>
+      <label for="cookTime">Cook Time:</label>
+      <input type="text" id="cookTime" formControlName="cookTime">
+    </div>
+    <div>
+      <label for="origins">Origins:</label>
+      <input type="text" id="origins" formControlName="origins" [ngModel]="itemForm.value.origins.join(',')" (ngModelChange)="itemForm.patchValue({ origins: $event.split(',') })">
+    </div>
+    <button type="submit">Create Item</button>
+  </form>
+  

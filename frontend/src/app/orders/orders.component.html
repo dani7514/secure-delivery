@@ -1,0 +1,33 @@
+
+<h2 class="text-center">My Orders</h2>
+<div class="container my-2">
+    <table class="table table-bordered">
+      <thead class="thead" >
+        <tr>
+          <th class="align-middle" scope="col">Order.No</th>
+          <th class="align-middle" scope="col">Items</th>
+          <th class="align-middle" scope="col">Total Price</th>
+          <th class="align-middle" scope="col">Payment Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of orders; let i='index+1';" >
+          <th *ngIf="order.status!='NEW'" scope="row" class=" text-center align-middle">{{i}}</th>
+          <td *ngIf="order.status!='NEW'" >
+            <ul>
+                <li *ngFor="let item of order.items; let i='index+1';" class="my-2 d-flex align-items-center">
+                  <span>{{i}}</span>
+                  <div class="items">
+                    <img src="{{item.food.imageUrl}}" alt="">
+                    <span>{{item.food.name}}</span>
+                    <span>{{item.food.price|currency:'INR':'symbol-narrow'}} x {{item.quantity}}</span>
+                  </div>
+                </li>
+            </ul>
+          </td>
+          <td *ngIf="order.status!='NEW'" class="align-middle"> {{order.totalPrice|currency:'INR':'symbol-narrow'}} </td>
+          <td *ngIf="order.status!='NEW'" class="align-middle">{{order.status}}</td>
+        </tr>
+      </tbody>
+    </table>
+</div>

@@ -1,0 +1,26 @@
+h2{
+    color:  #c15959;
+    margin: 1rem 0;
+}
+td img{
+    width: 3rem;
+    height: 3rem;
+    object-fit: cover;
+    border-radius: 1rem;
+    /* margin-left: 2rem; */
+}
+th{
+    color:  #c15959;
+}
+.items{
+    display: flex;
+    flex-wrap: wrap;
+}
+ul{
+    padding: 0!important;
+}
+ul li{
+    border: 1px solid #dee2e6;
+    padding: 0.5rem 0;
+}
+span{padding: 0.5rem 1rem;}

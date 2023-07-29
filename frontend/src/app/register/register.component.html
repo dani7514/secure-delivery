@@ -1,0 +1,89 @@
+<div *ngIf="visible" class="alert alert-success">
+  <strong>Success!</strong> This alert box could indicate a successful or positive action.
+</div>
+<div class="container">
+
+  <form [formGroup]="myRegister" (ngSubmit)="onSubmit()" class="container-fluid card my-3 px-4" >
+    <h1 class="text-center my-3" style="color: #e72929;">Register Now</h1>
+      <div class="form-row row mt-0">
+          <div class="form-group col-md-6">
+              <label for="inputFirstName">First Name</label>
+              <input formControlName="firstName" type="text" class="form-control" id="inputFirstName" placeholder="First Name">
+              <div class="text-danger" style="font-size: 0.75rem;" *ngIf="!(myRegister.get('firstName')?.valid ||myRegister.get('firstName')?.untouched)">
+                First name is required
+              </div>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputLastName">Last Name</label>
+              <input formControlName="lastName" type="text" class="form-control" id="inputLastName" placeholder="Last Name">
+              <div class="text-danger" style="font-size: 0.75rem;" *ngIf="!(myRegister.get('lastName')?.valid ||myRegister.get('lastName')?.untouched)">
+                Last name is required
+              </div>
+            </div>
+      </div>
+  
+      <div class="form-row row mt-2">
+        <div class="form-group col-md-6 my-2">
+          <label for="inputEmail4">Email</label>
+          <input formControlName="email" type="email" class="form-control" id="inputEmail4" placeholder="Email">
+          <div class="text-danger" style="font-size: 0.75rem;" *ngIf="!(myRegister.get('email')?.valid ||myRegister.get('email')?.untouched)">
+            Enter valid email
+          </div>
+        </div>
+        <div class="form-group col-md-6 my-2">
+          <label for="inputMobile">Mobile.No</label>
+          <input formControlName="mobile" type="number" class="form-control" id="inputMobile" placeholder="Mobile.No">
+          <div class="text-danger" style="font-size: 0.75rem;" *ngIf="!(myRegister.get('mobile')?.valid ||myRegister.get('mobile')?.untouched)">
+            Enter your mobile number
+          </div>
+        </div>
+        <div class="form-group col-md-6 my-2">
+          <label for="inputPassword4">Password</label>
+          <input formControlName="password" type="password" class="form-control" id="inputPassword4" placeholder="Password">
+        </div>
+        <div class="form-group col-md-6 my-2">
+          <label for="inputConfirmPassword4">Confirm Password</label>
+          <input formControlName="confirmPassword" type="password" class="form-control" id="inputConfirmPassword4" placeholder="Confirm Password">
+          <div class="text-danger" style="font-size: 0.75rem;" *ngIf="!(myRegister.get('confirmPassword')!.value==myRegister.get('password')!.value)">
+            password is not matched
+          </div>
+        </div>
+        </div>
+      
+      <div class="form-row row mt-2">
+          <div class="form-group col-md-6">
+              <label for="HouseNumber">House Number</label>
+              <input formControlName="houseNumber" class="form-control" type="text" name="" id="HouseNumber">
+          </div>
+          <div class="form-group col-md-6">
+              <label for="inputAddress">Street/Area</label>
+              <input formControlName="streetArea" type="text" class="form-control" id="inputAddress" placeholder="">
+          </div>
+      </div>
+      <div class="form-row row mt-2">
+        <div class="form-group col-md-6">
+          <label for="inputCity">City</label>
+          <input formControlName="city" type="text" class="form-control" id="inputCity">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputState">State</label>
+          <select formControlName="state" id="inputState" class="form-control">
+            <option  *ngFor="let s of states" value="{{s}}">{{s}}</option>
+          </select>
+          
+        </div>
+        <div class="form-group col-md-4 mt-2">
+          <label for="inputZip">Pincode</label>
+          <input formControlName="pincode" type="number" class="form-control" id="inputZip">
+          <div class="text-danger" style="font-size: 0.75rem;" *ngIf="!(myRegister.get('pincode')?.valid ||myRegister.get('pincode')?.untouched)">
+            Enter your city pincode
+          </div>
+        </div>
+      </div>
+      <div class="container text-center">
+          <button [disabled]="myRegister.invalid" type="submit" class="btn btn-primary">Register</button>
+  
+      </div>
+  
+    </form>
+</div>
